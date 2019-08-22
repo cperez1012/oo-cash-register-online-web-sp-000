@@ -32,7 +32,7 @@ class CashRegister
       @employee_discount = (@total * @employee_discount)
       @total = @total - @employee_discount
       @employee_discount > 0
-      "After the discount, the total comes to $#{@total}"
+      return "After the discount, the total comes to $#{@total}"
     end
   end
 
