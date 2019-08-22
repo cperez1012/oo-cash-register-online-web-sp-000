@@ -1,6 +1,6 @@
 require 'pry'
 class CashRegister
-  attr_accessor :total, :employee_discount, :items
+  attr_accessor :total, :employee_discount, :items, :previous_transaction_amount
 
   def initialize(employee_discount = nil)
     @total = 0.00
@@ -17,6 +17,7 @@ class CashRegister
   end
 
   def add_item(title, price, quantity = 1)
+    @previous_transaction_amount = (price * quantity)
     self.total += price * quantity
     quantity.times do
       items << title
@@ -33,7 +34,7 @@ class CashRegister
   end
 
   def void_last_transaction
-    @previous_transaction_amount = (price * quantity)
+
     @total -= @previous_transaction_amount
   end
 end
